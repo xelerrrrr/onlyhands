@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Test
+  </title>
+
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      background-color: black;
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      /* scrollbar-width: none; */
+    }
+
+    /* body::-webkit-scrollbar {
+      display: none;
+    } */
+
+
+
+    .no-scroll {
+      /* overflow: hidden; */
+    }
+
+    .easeload {
+      z-index: 0;
+      opacity: 0;
+      transition: all 2s ease;
+      transition-delay: 3s;
+
+      /* transition: 2s ease;
+
+
+      /*can set for width and height and maybe other properties*/
+      /* -webkit-transition: all 2s ease; 
+          -moz-transition: all 2s ease; 
+          -ms-transition: all 2s ease; 
+          -o-transition: all 2s ease;  */
+    }
+
+    .container {
+      z-index: 4;
+
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ball {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+      animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-100px);
+      }
+    }
+
+    img {
+      margin: -75px 0 0 -20px;
+      position: absolute;
+      /* top: 10px; */
+      /* top: 25px;
+      left: 25px; */
+    }
+  </style>
+</head>
+
+<body class="no-scroll">
+  <!-- <img class="easeload" onload="this.style.opacity=1" src="https://i.imgur.com/HxcZPc6.jpeg"> -->
+  <img id="big_background" class="easeload" src="https://i.imgur.com/HxcZPc6.jpeg">
+  <!-- <img class="easeload" onload="this.style.opacity=1" src="https://i.imgur.com/HxcZPc6.jpeg"> -->
+
+
+
+  <div class="container">
+    <div class=" ball"></div>
+  </div>
+
+  <!-- <img id="preload" src="https://i.imgur.com/HxcZPc6.jpeg" style="display:none;" /> -->
+  <!-- <img  src="https://i.imgur.com/HxcZPc6.jpeg"  /> -->
+  <!-- <div id="image">
+      <img id="preload" onload="fadeIn(this)" src="https://i.imgur.com/HxcZPc6.jpeg" style="display:none;" />
+  </div> -->
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script>
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
+  $(window).on("load", function () {
+    console.log("window loaded");
+    $(".container").fadeOut(2000); // Assuming container is a class, use ".". If it's an ID, use "#".
+    document.getElementById("big_background").style.opacity = '1';
+    setTimeout(doSomething, 3000);
+
+    function doSomething() {
+      // document.body.classList.remove('no-scroll');
+    }
+
+  });
+  // $( window ).on( "load", function() {
+  //       console.log( "window loaded" );
+  //      $(container).fadeOut(1000);
+
+  //   });
+  // this function must be defined in the global scope
+  // window.fadeIn = function(obj) {
+  //     $(obj).fadeIn(1000);
+  // }
+</script>
